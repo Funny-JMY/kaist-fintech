@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PayNote | 생활안정자금 신청</title>
+<style>
+:root{--navy:#0f172a;--blue:#1d4ed8;--bg:#f5f7fb;--card:#ffffff;--line:#d9e2ef;--text:#111827;--sub:#475569;--soft:#eef4ff}
+*{box-sizing:border-box}html,body{margin:0;padding:0;background:linear-gradient(180deg,#eef4ff 0%,#f5f7fb 26%);font-family:"Noto Sans CJK KR","Noto Sans KR","Malgun Gothic",sans-serif;color:var(--text);word-break:keep-all;overflow-wrap:break-word;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 24px 60px}.topbar{display:flex;justify-content:space-between;align-items:center;padding-bottom:22px}.brand{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:-.02em}.brand span{color:var(--blue)}.navnote{font-size:14px;color:var(--sub)}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:stretch}.hero-box{background:#fff;border:1px solid var(--line);border-radius:28px;padding:30px 30px 26px;box-shadow:0 14px 36px rgba(15,23,42,.06)}.eyebrow{display:inline-block;padding:7px 12px;border-radius:999px;background:var(--soft);font-size:13px;font-weight:800;color:var(--blue);margin-bottom:14px}h1{margin:0 0 10px;font-size:40px;line-height:1.2;letter-spacing:-.03em;color:var(--navy)}.hero-box p{margin:0;color:var(--sub);font-size:16px}
+.balance{background:linear-gradient(135deg,#0f172a 0%,#17316a 100%);color:#fff;border-radius:28px;padding:30px;box-shadow:0 18px 44px rgba(15,23,42,.14)}.balance .label{font-size:14px;font-weight:700;color:#d7e2ff}.balance .amount{margin-top:8px;font-size:52px;font-weight:800;letter-spacing:-.04em}.balance .desc{margin-top:10px;font-size:15px;color:#d7e2ff}
+.card{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 10px 28px rgba(15,23,42,.04)}.card h2{margin:0 0 16px;font-size:23px;letter-spacing:-.02em;color:var(--navy)}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{display:block;margin-bottom:7px;font-size:13px;font-weight:700;color:var(--sub)}.field input,.field select{width:100%;padding:14px 14px;border:1px solid var(--line);border-radius:14px;font-size:15px;color:var(--text);background:#fff}
+.summary{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}.mini{padding:16px;border-radius:18px;background:var(--soft)}.mini span{display:block;font-size:13px;color:var(--sub)}.mini strong{display:block;margin-top:6px;font-size:24px;letter-spacing:-.03em;color:var(--navy)}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}.qbtn,.submit{border:0;border-radius:16px;padding:15px;font-size:15px;font-weight:800;cursor:pointer}.qbtn{background:#eef2ff;color:#1e3a8a}.submit{margin-top:18px;width:100%;background:var(--blue);color:#fff;font-size:16px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.step{padding:18px;border-radius:18px;background:#fbfdff;border:1px solid var(--line)}.step strong{display:block;margin-bottom:6px;font-size:17px;color:var(--navy)}.step span{font-size:14px;color:var(--sub)}.smallnote{margin-top:12px;font-size:13px;color:var(--sub)}
+@media (max-width:980px){.hero,.formgrid,.summary,.quick,.steps{grid-template-columns:1fr}.wrap{padding:20px 16px 40px}h1{font-size:32px}.balance .amount{font-size:42px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand"><span>Pay</span>Note</div>
+    <div class="navnote">우리 회사 생활안정자금 서비스</div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-box">
+      <div class="eyebrow">생활안정자금 신청</div>
+      <h1>필요한 금액만<br>간편하게 신청</h1>
+      <p>재직 정보와 이번 달 근무 정보를 바탕으로 신청 가능 금액을 확인하고, 급여일에 자동 정산됩니다.</p>
+    </div>
+    <div class="balance">
+      <div class="label">현재 신청 가능 금액</div>
+      <div class="amount" id="available">₩ 420,000</div>
+      <div class="desc">회사의 재직 정보와 이번 달 근무 정보 기준 예상 금액</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>신청 정보 입력</h2>
+    <div class="formgrid">
+      <div class="field"><label>월 실수령액</label><input id="salary" type="number" value="3200000" step="10000"></div>
+      <div class="field"><label>이번 달 근로일수</label><input id="worked" type="number" value="14" step="1"></div>
+      <div class="field"><label>월 총 근로일수</label><input id="total" type="number" value="22" step="1"></div>
+      <div class="field"><label>재직기간</label><select id="tenure"><option value="1">1년 이상</option><option value="0.9">6개월~1년</option><option value="0.8">3개월~6개월</option></select></div>
+      <div class="field" style="grid-column:1 / -1"><label>신청 금액</label><input id="request" type="number" value="300000" step="10000"></div>
+    </div>
+    <div class="quick">
+      <button class="qbtn" onclick="setQuick(100000)">10만원</button>
+      <button class="qbtn" onclick="setQuick(300000)">30만원</button>
+      <button class="qbtn" onclick="setQuick(500000)">50만원</button>
+      <button class="qbtn" onclick="setQuick(700000)">70만원</button>
+    </div>
+    <div class="summary">
+      <div class="mini"><span>신청 가능 금액</span><strong id="eligible">₩ 420,000</strong></div>
+      <div class="mini"><span>신청 금액</span><strong id="requested">₩ 300,000</strong></div>
+      <div class="mini"><span>예상 수수료</span><strong id="fee">₩ 3,000</strong></div>
+      <div class="mini"><span>급여일 정산액</span><strong id="repay">₩ 303,000</strong></div>
+    </div>
+    <button class="submit">지금 신청하기</button>
+    <div class="smallnote">실제 승인 금액은 회사 정책과 재직 상태 확인 결과에 따라 달라질 수 있습니다.</div>
+  </section>
+
+  <section class="card">
+    <h2>이용 방법</h2>
+    <div class="steps">
+      <div class="step"><strong>1. 금액 확인</strong><span>재직 정보와 근무 정보를 기준으로 신청 가능 금액 확인</span></div>
+      <div class="step"><strong>2. 금액 신청</strong><span>필요한 금액만 선택하고 수수료 확인 후 신청 진행</span></div>
+      <div class="step"><strong>3. 자동 정산</strong><span>별도 상환 절차 없이 급여일에 자동 정산 진행</span></div>
+    </div>
+  </section>
+</div>
+<script>
+const salary=document.getElementById('salary');
+const worked=document.getElementById('worked');
+const total=document.getElementById('total');
+const tenure=document.getElementById('tenure');
+const request=document.getElementById('request');
+function won(v){return '₩ '+Math.max(0,Math.round(v)).toLocaleString('ko-KR')}
+function calc(){
+  const s=Number(salary.value||0), w=Number(worked.value||0), t=Math.max(1,Number(total.value||1)), tn=Number(tenure.value||1), r=Number(request.value||0);
+  const earned=s*(w/t); const eligible=earned*0.65*tn; const req=Math.min(r,eligible); const fee=req*0.01; const repay=req+fee;
+  document.getElementById('available').textContent=won(eligible);
+  document.getElementById('eligible').textContent=won(eligible);
+  document.getElementById('requested').textContent=won(req);
+  document.getElementById('fee').textContent=won(fee);
+  document.getElementById('repay').textContent=won(repay);
+}
+function setQuick(v){request.value=v;calc()}
+[salary,worked,total,tenure,request].forEach(el=>{el.addEventListener('input',calc);el.addEventListener('change',calc)});
+calc();
+</script>
+</body>
+</html>

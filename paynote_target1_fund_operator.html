@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PayNote | 사내근로복지기금 운영자용 MVP</title>
+<style>
+:root{--navy:#0f172a;--blue:#1d4ed8;--blue2:#2563eb;--bg:#f5f7fb;--card:#ffffff;--line:#d9e2ef;--text:#111827;--sub:#475569;--soft:#eef4ff}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:"Noto Sans CJK KR","Noto Sans KR","Malgun Gothic",sans-serif;word-break:keep-all;overflow-wrap:break-word;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 24px 56px}
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:6px 0 24px}
+.brand{font-size:28px;font-weight:800;color:var(--navy);letter-spacing:-0.02em}.brand span{color:var(--blue)}
+.navnote{font-size:14px;color:var(--sub)}
+.hero{display:grid;grid-template-columns:1.15fr 0.85fr;gap:24px;align-items:stretch}
+.panel{background:linear-gradient(135deg,#0f172a 0%,#142953 100%);color:#fff;border-radius:28px;padding:36px 34px;box-shadow:0 18px 44px rgba(15,23,42,.12)}
+.badge{display:inline-block;padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:700;margin-bottom:18px}
+h1{margin:0 0 14px;font-size:44px;line-height:1.22;letter-spacing:-.03em}
+.hero p{margin:0 0 26px;font-size:17px;color:#d7e2ff}
+.cta{display:flex;gap:12px;flex-wrap:wrap}.btn{padding:15px 22px;border-radius:16px;font-size:15px;font-weight:800;border:0;cursor:pointer}.btn-primary{background:#fff;color:var(--navy)}.btn-secondary{background:rgba(255,255,255,.08);color:#fff;border:1px solid rgba(255,255,255,.14)}
+.hero-card,.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 10px 28px rgba(15,23,42,.04)}
+.metric{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.mini{padding:18px;border-radius:18px;background:var(--soft)}.mini strong{display:block;font-size:28px;color:var(--navy);letter-spacing:-.03em}.mini span{display:block;margin-top:6px;font-size:14px;color:var(--sub)}
+.section{margin-top:22px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card h2{margin:0 0 12px;font-size:22px;letter-spacing:-.02em}.card h3{margin:0 0 8px;font-size:18px;letter-spacing:-.02em}
+.list{margin:0;padding-left:20px}.list li{margin:8px 0;font-size:15px;color:var(--text)}
+.kv{display:grid;grid-template-columns:160px 1fr;gap:14px;align-items:center;padding:16px 0;border-top:1px solid var(--line)}.kv:first-child{border-top:0;padding-top:0}.label{font-size:14px;font-weight:800;color:var(--blue)}.value{font-size:15px;color:var(--text)}
+.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field label{display:block;margin-bottom:7px;font-size:13px;font-weight:700;color:var(--sub)}.field input,.field select,.field textarea{width:100%;padding:14px 14px;border:1px solid var(--line);border-radius:14px;font-size:15px;background:#fff;color:var(--text)}.field textarea{min-height:120px;resize:vertical}
+.submit{margin-top:18px;width:100%;padding:17px;border-radius:18px;background:var(--blue);color:#fff;border:0;font-size:16px;font-weight:800;cursor:pointer}
+.note{margin-top:10px;font-size:13px;color:var(--sub)}
+@media (max-width:980px){.hero,.grid2,.grid3,.formgrid{grid-template-columns:1fr}.wrap{padding:20px 16px 40px}h1{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="brand"><span>Pay</span>Note</div>
+    <div class="navnote">사내근로복지기금 운영자용 MVP</div>
+  </div>
+
+  <section class="hero">
+    <div class="panel">
+      <div class="badge">생활안정자금 대출 실행 인프라</div>
+      <h1>기금 목적사업 실행을<br>더 가볍고 정확하게</h1>
+      <p>생활안정자금 대출 접수, 자격 확인, 집행, 회수 관리까지 PayNote가 대신 수행합니다. 운영자는 기금 정책을 유지하면서 실무 부담만 줄일 수 있습니다.</p>
+      <div class="cta">
+        <button class="btn btn-primary">파일럿 도입 문의</button>
+        <button class="btn btn-secondary">데모 요청</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h2>도입 시 기대 효과</h2>
+      <div class="metric">
+        <div class="mini"><strong>무상</strong><span>초기 파일럿 기준 운영 대행</span></div>
+        <div class="mini"><strong>API 연동</strong><span>재직기간·월간 근로일수 회신 구조</span></div>
+        <div class="mini"><strong>모바일 신청</strong><span>직원 체감 복지 향상</span></div>
+        <div class="mini"><strong>자동 정산</strong><span>회수 관리 프로세스 표준화</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section grid3">
+    <div class="card">
+      <h3>현재 문제</h3>
+      <ul class="list">
+        <li>신청 접수 및 증빙 확인의 수기 운영</li>
+        <li>반복 민원 응대와 승인 기준 설명 부담</li>
+        <li>집행 후 회수 상태 추적의 행정 부담</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>PayNote 방식</h3>
+      <ul class="list">
+        <li>직원용 모바일 신청 화면 제공</li>
+        <li>근무 정보 기반 자동 자격 검토</li>
+        <li>집행·정산·회수 상태 대시보드 제공</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>운영자 이점</h3>
+      <ul class="list">
+        <li>목적사업 집행 효율화</li>
+        <li>실무 부담 및 오류 가능성 완화</li>
+        <li>직원 체감 복지와 제도 활용률 제고</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section grid2">
+    <div class="card">
+      <h2>도입 프로세스</h2>
+      <div class="kv"><div class="label">1단계</div><div class="value">기금 운영 기준 및 내부 승인 절차 확인</div></div>
+      <div class="kv"><div class="label">2단계</div><div class="value">재직기간·월간 근로일수 API 연동 설정</div></div>
+      <div class="kv"><div class="label">3단계</div><div class="value">직원용 신청 페이지 오픈 및 파일럿 운영 시작</div></div>
+      <div class="kv"><div class="label">4단계</div><div class="value">신청 건수, 승인율, 회수율 기준 성과 점검</div></div>
+    </div>
+    <div class="card">
+      <h2>파일럿 문의</h2>
+      <div class="formgrid">
+        <div class="field"><label>기업명</label><input placeholder="예: OO전자" /></div>
+        <div class="field"><label>담당 부서</label><input placeholder="예: 인사총무팀" /></div>
+        <div class="field"><label>담당자명</label><input placeholder="이름 입력" /></div>
+        <div class="field"><label>연락처</label><input placeholder="010-0000-0000" /></div>
+      </div>
+      <div class="field" style="margin-top:14px"><label>현재 운영 중인 생활안정자금 제도</label><textarea placeholder="현재 집행 방식, 승인 기준, 월 평균 신청 건수 등을 입력"></textarea></div>
+      <button class="submit">도입 상담 요청</button>
+      <div class="note">제출 후 2영업일 이내 파일럿 미팅 일정 안내</div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
